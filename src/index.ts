@@ -15,11 +15,12 @@ mongoose
   });
 app.use(express.json());
 app.use(cors());
-app.get('/test', (req: express.Request, res: express.Response) => {
+app.get('/helth', (req: express.Request, res: express.Response) => {
   res.json({
-    message: 'hello world',
+    message: 'helth is good',
   });
 });
+
 app.use('/api/my/user', MyUserRoute);
 app.listen(process.env.PORT, () => {
   console.log('server started on localhost:7000');
