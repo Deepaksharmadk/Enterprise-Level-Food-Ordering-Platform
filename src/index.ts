@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 import myRestaurantRoute from './routes/MyRestaurantRoute';
 import restaurantRoute from './routes/RestaurantRoute';
 import orderRoute from './routes/OrderRoute';
-import userRoute from './routes/MyUserRoute';
+import userRoute from './routes/UserRoute';
 const app = express();
 
 mongoose
