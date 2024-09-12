@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { Multer } from 'multer';
 import Restaurant from '../models/restaurant';
 import cloudinary from 'cloudinary';
 import mongoose from 'mongoose';
