@@ -3,11 +3,11 @@ import { v2 as cloudinary } from 'cloudinary';
 import cors from 'cors';
 import 'dotenv/config';
 import mongoose from 'mongoose';
-import MyUserRoute from '@routes/MyUserRoute';
+
 import myRestaurantRoute from './routes/MyRestaurantRoute';
 import restaurantRoute from './routes/RestaurantRoute';
 import orderRoute from './routes/OrderRoute';
-
+import userRoute from './routes/MyUserRoute';
 const app = express();
 
 mongoose
@@ -35,7 +35,7 @@ app.get('/helth', (req: express.Request, res: express.Response) => {
   });
 });
 
-app.use('/api/my/user', myUserRoute);
+app.use('/api/my/user', userRoute);
 app.use('/api/my/restaurant', myRestaurantRoute);
 app.use('/api/restaurant', restaurantRoute);
 app.use('/api/order', orderRoute);
