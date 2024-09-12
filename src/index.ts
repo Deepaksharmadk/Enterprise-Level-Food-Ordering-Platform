@@ -1,8 +1,13 @@
 import express from 'express';
+import { v2 as cloudinary } from 'cloudinary';
 import cors from 'cors';
 import 'dotenv/config';
 import mongoose from 'mongoose';
-import MyUserRoute from './routes/MyuserRoutes';
+import myUserRoute from './routes/MyUserRoutes';
+import myRestaurantRoute from './routes/MyRestaurantRoute';
+import restaurantRoute from './routes/RestaurantRoute';
+import orderRoute from './routes/OrderRoute';
+
 const app = express();
 
 mongoose
@@ -13,6 +18,11 @@ mongoose
   .catch((e) => {
     console.log(e);
   });
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 app.use(express.json());
 app.use(
   cors({
@@ -25,7 +35,11 @@ app.get('/helth', (req: express.Request, res: express.Response) => {
   });
 });
 
-app.use('/api/my/user', MyUserRoute);
+app.use('/api/my/user', myUserRoute);
+app.use('/api/my/restaurant', myRestaurantRoute);
+app.use('/api/restaurant', restaurantRoute);
+app.use('/api/order', orderRoute);
+
 app.listen(process.env.PORT, () => {
   console.log('server started on localhost:7000');
 });
